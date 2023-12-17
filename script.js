@@ -1,18 +1,59 @@
-// // FUNCTION TO UPDATE  PROGRESS BAR
-// function updateProgressBar(skillClassName, percentage) {
+// FUNCTION TO UPDATE  PROGRESS BAR
 
-//     const skillBar = document.querySelector(`.${skillClassName}`);
+document.addEventListener("DOMContentLoaded", function () {
+    const skillBars = document.querySelectorAll('.skill-bar');
 
-//     skillBar.style.width = `${percentage}%`;
-//     skillBar.parentElement.setAttribute("aria-valuenow", percentage);
-//     skillBar.querySelector(".skill-percentage").innerText = `${percentage}%`;
-// }
+    // create an Intersection Observer
+    const observer = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    // if the section is in view, the animation should trigger
+                    animateSkillBars();
+                    // Unobserve to stop observing once animation is triggered
+                    observer.unobserve(entry.target); // Fix: Use entry.target instead of entry, target
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Example of using the function
-//     updateProgressBar("react-js-bar", 70);
-//     updateProgressBar("javascript-bar", 75);
-// });
+    // observe each skill bar
+    skillBars.forEach(function (bar) {
+        observer.observe(bar);
+    });
+
+    // Function to animate skill bars
+    function animateSkillBars() {
+        skillBars.forEach(function (bar) {
+            const widthPercent = bar.style.width;
+
+            bar.style.width = "0";
+
+            // to animate the skill bar width
+            setTimeout(function () {
+                bar.style.width = widthPercent;
+            }, 500);
+        });
+    }
+});
+// Function to add reveal to each section
+
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
 
 // Function to validate the form fields
 function validateForm() {
@@ -59,62 +100,11 @@ function validateForm() {
         document.getElementById("messageLengthError").style.display = "block";
         return false;
     }
-    console.log(firstName, secondName, email, message)
 
     // if all validation pass, form submit to the server
-    return false;
+    return true;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //  Function to update date
 const dateUpdate = document.querySelector(".date-info");
@@ -180,3 +170,34 @@ portfolioImages.forEach((_, i) => {
 
 // Show the initial image
 showImage(currentIndex);
+
+// Function for swiping image with hand
+let touchStartX = 0;
+let touchEndX = 0;
+
+// event listener for touch event
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+}
+function handleTouchMove(e) {
+    touchEndX = e.touches[0].clientX;
+}
+
+//Function to handle swipe and navigate images
+function handleSwipe(){
+    const swipeThreshold = 6;
+
+    if(touchStartX - touchEndX > swipeThreshold){
+        currentIndex = (currentIndex + 1) % portfolioImages.length;
+    } else if(touchEndX - touchStartX > swipeThreshold) {
+        currentIndex = (currentIndex - 1 + portfolioImages.length) % portfolioImages.length;
+    }
+
+    // show the new image
+    showImage(currentIndex)
+}
+// to add event listener for swipe detection
+document.addEventListener('touchend', handleSwipe, false);

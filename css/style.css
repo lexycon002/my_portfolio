@@ -74,6 +74,15 @@ nav ul li a {
 .icons-social {
     display: none;
 }
+section {
+    opacity: 0;
+    transform:translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+section.reveal {
+    opacity:1;
+    transform:translateY(0);
+}
 
 /* INTRO SECTION */
 .intro-container {
@@ -163,7 +172,7 @@ nav ul li a {
 .custome-button {
     background: var(--color-white);
     color:var(--color-symbol);
-    width:6.5rem;
+    width:fit-content;
     padding-top: 0.46rem;
     padding-bottom: 0.46rem;
     padding-left: 0.35rem;
@@ -366,7 +375,7 @@ text-transform: capitalize;
     line-height: 20px;
     color:var(--color-symbol);
     padding-right: 0.35rem;
-    transition: width 0.3s;
+    transition: width 0.10 ease;
 }
 .skill-percentage {
     font-size: 0.9rem;
@@ -1925,6 +1934,9 @@ nav h2 {
     .nav-lists {
         width:70vw;
     }
+    nav {
+        padding-left: 15px;
+    }
     .showMenu {
         left:0;
     }
@@ -1975,7 +1987,7 @@ nav h2 {
         font-size: 0.75rem;
     }
     .portfolio-desc {
-        margin-top: 30px;
+        margin-top: 3.7rem;
     }
     .dot-container {
         display: flex;
@@ -2014,6 +2026,9 @@ nav h2 {
         margin-bottom: 0;
     }
     input, textarea {
+        font-size: 17px;
+    }
+    .error-msg {
         font-size: 17px;
     }
 }
@@ -2124,6 +2139,17 @@ nav h2 {
     }
     .services-text h2 {
         font-size: 1.4em;
+    }
+    .portfolio-sub-text h3 {
+        font-size: 0.75rem;
+        padding-left: 1rem;
+    }
+    .portfolio-sub-text p {
+        padding:5px 0;
+        margin-right:5px;
+        margin-left: 0;
+        font-size: 0.80rem;
+        padding-right: 1rem;
     }
 
 }
