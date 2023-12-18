@@ -2142,14 +2142,13 @@ nav h2 {
     }
     .portfolio-sub-text h3 {
         font-size: 0.75rem;
-        padding-left: 1rem;
+        padding-left: 10px;
     }
     .portfolio-sub-text p {
         padding:5px 0;
         margin-right:5px;
         margin-left: 0;
         font-size: 0.80rem;
-        padding-right: 10px;
     }
 
 }
