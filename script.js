@@ -84,7 +84,7 @@ closeIcon.addEventListener('click', () => {
     containerDom.classList.remove('showMenu');
 });
 
-// Add this JavaScript code for swiping functionality
+//  Function for swiping functionality
 
 let currentIndex = 0;
 const portfolioImages = document.querySelectorAll('.portfolio-info');
