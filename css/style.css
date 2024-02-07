@@ -1456,9 +1456,10 @@ input, textarea {
         font-size: 0.80rem;
     }
     .services-info{
-        display: block;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
     .services-desc {
         width:60%;
