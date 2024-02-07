@@ -1,6 +1,7 @@
 // Function to validate the form fields
-function validateForm() {
-    console.log("validate function called");
+function validateForm(e) {
+    e.preventDefault();
+    // console.log("validate function called");
     // Reset error messages
     document.getElementById("firstNameError").style.display = "none";
     document.getElementById("secondNameError").style.display = "none";
