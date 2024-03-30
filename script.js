@@ -115,35 +115,3 @@ portfolioImages.forEach((_, i) => {
 // Show the initial image
 showImage(currentIndex);
 
-
-
-// Function for swiping image with hand
-// let touchStartX = 0;
-// let touchEndX = 0;
-
-// event listener for touch event
-// document.addEventListener('touchstart', handleTouchStart, false);
-// document.addEventListener('touchmove', handleTouchMove, false);
-
-// function handleTouchStart(e) {
-//     touchStartX = e.touches[0].clientX;
-// }
-// function handleTouchMove(e) {
-//     touchEndX = e.touches[0].clientX;
-// }
-
-//Function to handle swipe and navigate images
-// function handleSwipe(){
-//     const swipeThreshold = 6;
-
-//     if(touchStartX - touchEndX > swipeThreshold){
-//         currentIndex = (currentIndex + 1) % portfolioImages.length;
-//     } else if(touchEndX - touchStartX > swipeThreshold) {
-//         currentIndex = (currentIndex - 1 + portfolioImages.length) % portfolioImages.length;
-//     }
-
-//     // show the new image
-//     showImage(currentIndex)
-// }
-// // to add event listener for swipe detection
-// document.addEventListener('touchend', handleSwipe, false);
